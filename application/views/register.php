@@ -15,8 +15,17 @@
             <div class="d-grid mt-4">
                 <input type="submit" name="Create" value="Submit" class="btn btn-dark btn-lg">
             </div>
-
         </form>
+        <?php if ($this->session->flashdata('success')) { ?>
+            <div class="alert alert-info d-grid">
+                <h1>Successfully Submited!</h1>
+            </div>
+        <?php } ?>
+        <?php if ($this->session->flashdata('error')) { ?>
+            <div class="alert alert-danger d-grid">
+                <h1>FAILED!</h1>
+            </div>
+        <?php } ?>
     </div>
 </main>
 
