@@ -12,7 +12,8 @@ class UserController extends CI_Controller
 
     public function index()
     {
-        $this->load->view('login');
+        $datas['student'] = $this->user->read();
+        $this->load->view('login', $datas);
     }
     public function register()
     {
@@ -31,8 +32,19 @@ class UserController extends CI_Controller
                 'std_course' => $course,
                 'std_no' => $studentno
             ];
-            $this->user->create($data);
-            redirect(base_url('usercontroller/index'));
+
+
+            $status = $this->user->create($data);
+
+            if ($status == true) {
+                $this->session->set_flashdata('success', 'Successfuly Added');
+                redirect(base_url('usercontroller/index'));
+            } else {
+                $this->session->set_flashdata('error', 'Not Successfull');
+                $this->load->view('register');
+            }
+        } else {
+            $this->load->view('register');
         }
     }
 }
