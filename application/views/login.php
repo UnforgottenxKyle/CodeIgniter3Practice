@@ -14,7 +14,7 @@
         </form>
     </div>
 
-    <table class="w-50 table table-bordered table-hover table-stripped">
+    <table class="w-50 table table-bordered table-hover table-striped">
         <tbody>
             <tr>
                 <td>ID</td>
@@ -22,14 +22,21 @@
                 <td>LASTNAME</td>
                 <td>COURSE</td>
                 <td>STUDENT NUMBER</td>
+                <td>ACTION</td>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            <?php foreach ($student as $data) { ?>
+                <tr>
+                    <td><?= $data['id'] ?></td>
+                    <td><?= $data['std_first_name'] ?></td>
+                    <td><?= $data['std_last_name'] ?></td>
+                    <td><?= $data['std_course'] ?></td>
+                    <td><?= $data['std_no'] ?></td>
+                    <td class="row">
+                        <a href="<?= base_url() ?>UserController/delete" class="btn btn-danger btn-sm col">DELETE</a>
+                        <a href="<?= base_url() ?>UserController/update" class="btn btn-success btn-sm col">UPDATE</a>
+                    </td>
+                </tr>
+            <?php } ?>
         </tbody>
     </table>
 </main>
