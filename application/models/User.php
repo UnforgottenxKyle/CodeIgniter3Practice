@@ -17,4 +17,16 @@ class User extends CI_Model
         $query = $this->db->get('student');
         return $query->result_array();
     }
+
+    function delete($id)
+    {
+
+        $this->db->where('id', $id);
+        $this->db->delete('student');
+        if ($this->db->affected_rows() >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
