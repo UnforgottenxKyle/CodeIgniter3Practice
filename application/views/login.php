@@ -32,8 +32,9 @@
                     <td><?= $data['std_course'] ?></td>
                     <td><?= $data['std_no'] ?></td>
                     <td class="row">
-                        <a href="<?= base_url() ?>UserController/delete" class="btn btn-danger btn-sm col">DELETE</a>
-                        <a href="<?= base_url() ?>UserController/update" class="btn btn-success btn-sm col">UPDATE</a>
+                        <a href="<?= base_url() ?>UserController/delete/<?= $data['id'] ?>" class="btn btn-danger btn-sm col">DELETE</a>
+                        <a href="<?= base_url() ?>UserController/update/<?= $data['id'] ?>" class="btn btn-success btn-sm col">UPDATE</a>
+
                     </td>
                 </tr>
             <?php } ?>

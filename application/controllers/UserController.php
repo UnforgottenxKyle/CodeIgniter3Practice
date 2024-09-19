@@ -47,4 +47,16 @@ class UserController extends CI_Controller
             $this->load->view('register');
         }
     }
+
+    public function delete($id)
+    {
+        $status = $this->user->delete($id);
+        if ($status == true) {
+            $this->session->set_flashdata('success', 'Successfuly Added');
+            redirect(base_url('usercontroller/index'));
+        } else {
+            $this->session->set_flashdata('error', 'Not Successfull');
+            redirect(base_url('usercontroller/index'));
+        }
+    }
 }
