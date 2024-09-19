@@ -22,6 +22,7 @@
                 <td>LASTNAME</td>
                 <td>COURSE</td>
                 <td>STUDENT NUMBER</td>
+                <td>ACTION</td>
             </tr>
             <?php foreach ($student as $data) { ?>
                 <tr>
@@ -30,6 +31,10 @@
                     <td><?= $data['std_last_name'] ?></td>
                     <td><?= $data['std_course'] ?></td>
                     <td><?= $data['std_no'] ?></td>
+                    <td class="row">
+                        <a href="<?= base_url() ?>UserController/delete" class="btn btn-danger btn-sm col">DELETE</a>
+                        <a href="<?= base_url() ?>UserController/update" class="btn btn-success btn-sm col">UPDATE</a>
+                    </td>
                 </tr>
             <?php } ?>
         </tbody>
