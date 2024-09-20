@@ -29,4 +29,22 @@ class User extends CI_Model
             return false;
         }
     }
+
+    function update($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('student');
+        return $query->row();
+    }
+
+    function updateData($id, $data)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('student', $data);
+        if ($this->db->affected_rows() >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

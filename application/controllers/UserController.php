@@ -59,4 +59,34 @@ class UserController extends CI_Controller
             redirect(base_url('usercontroller/index'));
         }
     }
+
+    public function update($id)
+    {
+        $data['student'] = $this->user->update($id);
+        $this->load->view('edit', $data);
+    }
+
+    public function updateStudent($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $firstname = $this->input->post('firstname');
+            $lastname = $this->input->post('lastname');
+            $course = $this->input->post('course');
+            $studentno = $this->input->post('studentno');
+            $data = [
+                'std_first_name' => $firstname,
+                'std_last_name' => $lastname,
+                'std_course' => $course,
+                'std_no' => $studentno
+            ];
+        }
+        $status = $this->user->updateData($id, $data);
+        if ($status == true) {
+            $this->session->set_flashdata('success', 'Successfuly Added');
+            redirect(base_url('usercontroller/index'));
+        } else {
+            $this->session->set_flashdata('error', 'Not Successfull');
+            redirect(base_url('usercontroller/index'));
+        }
+    }
 }
